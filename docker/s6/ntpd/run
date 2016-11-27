@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -f setup ] && . setup
+
+exec gosu root /usr/sbin/ntpd -d

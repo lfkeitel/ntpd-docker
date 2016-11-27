@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Cleanup SOCAT services and s6 event folder
+rm -rf $(find /app/s6/ -name 'event')
+rm -rf /app/s6/SOCAT_*

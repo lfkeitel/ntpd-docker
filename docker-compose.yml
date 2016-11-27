@@ -1,0 +1,26 @@
+version: '2'
+services:
+  ntpd:
+    build: .
+    image: ntpd/ntpd:latest
+    container_name: ntpd
+    hostname: ntpd
+    restart: on-failure:2
+    cap_add:
+      - SYS_TIME
+      - SYS_NICE
+    mem_limit: 64M
+    volumes:
+      - ./docker/ntpd.conf:/etc/ntpd.conf:ro
+    tmpfs:
+      - /var/run:rw,noexec,nosuid,size=1m
+      - /var/db:rw,noexec,nosuid,size=8m
+      - /app/s6/.s6-svscan:rw,noexec,nosuid,size=1m
+      - /app/s6/ntpd/event:rw,noexec,nosuid,size=1m
+      - /app/s6/ntpd/supervise:rw,noexec,nosuid,size=1m
+    read_only: true
+    ports:
+      - "123/udp:123/udp"
+    environment:       
+      Author: "Kim Goh"
+    # dns: 8.8.8.8
