@@ -2,7 +2,7 @@ version: '2'
 services:
   ntpd:
     build: .
-    image: ntpd/ntpd:latest
+    image: lfkeitel/ntpd:latest
     container_name: ntpd
     hostname: ntpd
     restart: on-failure:2
@@ -21,6 +21,3 @@ services:
     read_only: true
     ports:
       - "123/udp:123/udp"
-    environment:       
-      Author: "Kim Goh"
-    # dns: 8.8.8.8
