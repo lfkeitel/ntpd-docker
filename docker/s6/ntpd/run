@@ -2,4 +2,4 @@
 
 [ -f setup ] && . setup
 
-exec gosu root /usr/sbin/ntpd -n -b -g -l stdout
+exec gosu root /usr/sbin/ntpd -n -b -g -l stdout -u ntp:ntp
